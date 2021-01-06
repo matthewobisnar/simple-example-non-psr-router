@@ -1,0 +1,11 @@
+{
+    "name":"simattyto/router",
+    "description":" simple router",
+    "autoload":{
+        "psr-4": {
+            "app\\": "app/",
+            "router\\" : "router/",
+            "Api\\": "api/"
+        }
+    }
+}
