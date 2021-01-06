@@ -16,6 +16,11 @@ class Router
         $this->basePath = $dir;
     }
 
+    public function localize(\Closure $localize) {
+        call_user_func($localize, $this); 
+        return $this;
+    }
+
     public function map($method, $uri, $concrete)
     {
         $uri = strtolower(trim($uri, "/"));
@@ -34,11 +39,11 @@ class Router
             if (in_array($request_method, $this->routes[$request_uri]['verbs'])) {
                 return true;
             } else {
-                die(json_encode(array("status"=> 300, "Invalid Method.")));
+                die(json_encode(array("status"=> 300, "description" => "Invalid Method.")));
             }
         }
 
-        die(json_encode(array("status"=> 404, "Api not found.")));
+        die(json_encode(array("status"=> 404, "description"  => "Api not found.")));
 
     }
 
